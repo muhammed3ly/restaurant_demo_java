@@ -1,8 +1,8 @@
-import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Vector;
 
-class Pair<T, T2> implements Comparable<Pair> {
+class Pair<T, T2> implements Comparable<Pair>
+{
     T first;
     T2 second;
     Pair(T first, T2 second) {
@@ -12,7 +12,6 @@ class Pair<T, T2> implements Comparable<Pair> {
 
     @Override
     public int compareTo(Pair o) {
-
         return Long.compare((long)this.first, (long)o.first);
     }
 }
@@ -20,7 +19,7 @@ class Pair<T, T2> implements Comparable<Pair> {
 public class City {
     private int nodesNumber;
     private Vector<Vector<Pair<Integer, Long>>> graph;
-    private Vector<Pair<Integer, Integer>> branches;
+    private Vector<Branch> branches;
 
     public int findNearestBranch(int blockNumber)
     {
@@ -46,10 +45,10 @@ public class City {
             int id = -1;
             for(int i = 0 ; i < branches.size() ; i++)
             {
-                if(branches.elementAt(i).second == currentNode)
+                if(branches.elementAt(i).getBlockNumber() == currentNode)
                 {
                     isBranch = true;
-                    id = branches.elementAt(i).first;
+                    id = branches.elementAt(i).getId();
                     break;
                 }
             }
@@ -73,8 +72,12 @@ public class City {
         return -1;
     }
 
+    public Vector<Branch> getBranches() {
+        return branches;
+    }
+
     public City(int nodesNumber, Vector<Vector<Pair<Integer, Long>>> graph,
-                Vector<Pair<Integer, Integer>> branches)
+                Vector<Branch> branches)
     {
         this.nodesNumber = nodesNumber;
         this.graph = graph;

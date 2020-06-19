@@ -1,6 +1,6 @@
 public class Customer extends User {
     private int blockNumber;
-    private int ordersCount;
+    public int ordersCount;
 
     public int getBlockNumber() {
         return blockNumber;
@@ -16,6 +16,14 @@ public class Customer extends User {
         this.name = name;
     }
 
+   public int getOrdersCount(){
+        return this.ordersCount;
+   }
+
+   public boolean hasDiscount()
+   {
+       return this.getOrdersCount() > 0 && this.getOrdersCount() % 3 == 0;
+   }
     Customer(String mobileNumber, String name, String password, int blockNumber)
     {
         super(mobileNumber, name, password);
