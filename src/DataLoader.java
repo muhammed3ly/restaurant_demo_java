@@ -63,7 +63,7 @@ public class DataLoader {
             int numberOfNodes = Integer.parseInt(tokens[0]);
             int numberOfEdges = Integer.parseInt(tokens[1]);
             Vector<Vector<Pair<Integer, Long>>> graph = new Vector<Vector<Pair<Integer, Long>>>();
-            for(int i = 0 ; i < numberOfNodes ; i++)
+            for(int i = 0 ; i <= numberOfNodes ; i++)
                 graph.add(new Vector<>());
             for(int i = 0 ; i < numberOfEdges ; i++)
             {
